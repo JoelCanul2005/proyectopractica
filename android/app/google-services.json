@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "506762680822",
+    "project_id": "proyectoestadias-6e9b5",
+    "storage_bucket": "proyectoestadias-6e9b5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506762680822:android:a96e23feec50cf9849cfd7",
+        "android_client_info": {
+          "package_name": "com.joelcanul.proyectopractica"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsG01AIt0-2SE54TE689GdjpkwVCbD864"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
