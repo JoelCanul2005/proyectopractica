@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'add_cliente.dart';
-
+import 'clientes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,7 +8,32 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                color: Colors.grey,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.assignment, color: Colors.blueAccent, size: 24),
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'ORDEN DE TRABAJO',
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.menu, color: Colors.black87),
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -17,7 +42,6 @@ class HomeScreen extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.only(bottom: 16),
-                width: double.infinity,
                 child: const _MainCard(
                   icon: Icons.home,
                   label: 'EMPRESA',
@@ -25,20 +49,22 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               _buildRow(
-                leftCard: const _MainCard(
+                leftCard: _MainCard(
                   icon: Icons.person_outline,
                   label: 'CLIENTES',
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Clientes()),
+                  ),
                   color: Colors.blue,
                 ),
                 rightCard: _SecondaryCard(
                   icon: Icons.person_outline,
                   label: 'Nuevo',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const AddCliente()),
-                    );
-                  },
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddCliente()),
+                  ),
                 ),
               ),
               _buildRow(
@@ -71,35 +97,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      backgroundColor: Colors.white,
-      title: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(Icons.assignment, color: Colors.blueAccent, size: 24),
-          ),
-          const SizedBox(width: 8),
-          const Text(
-            'ORDEN DE TRABAJO',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black87),
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-
   Widget _buildRow({required Widget leftCard, required Widget rightCard}) {
     return Row(
       children: [
@@ -127,38 +124,43 @@ class _MainCard extends StatelessWidget {
   final String label;
   final Color color;
   final double fontSize;
+  final VoidCallback? onPressed;
 
   const _MainCard({
     required this.icon,
     required this.label,
     required this.color,
     this.fontSize = 18,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, color: Colors.white, size: 36),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: fontSize,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: 120,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: Colors.white, size: 36),
+              const SizedBox(height: 4),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: fontSize,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
