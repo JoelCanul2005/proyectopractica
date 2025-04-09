@@ -1,16 +1,11 @@
-# proyectopractica
+# 📱 Proyecto de Prueba Técnica con Flutter y Firebase
 
-Proyecto de práctica Flutter + Firebase para estadias
+Este proyecto fue desarrollado como parte de una prueba técnica para estadías profesionales. Consiste en una aplicación móvil construida con Flutter, utilizando Firebase como backend, que permite realizar operaciones CRUD (crear, leer, actualizar y eliminar) sobre una colección de clientes.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Tecnologías utilizadas
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter (Material 3)
+- Firebase (Firestore)
+- Dart

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/cliente.dart';
 import '../services/firebase_service.dart';
 import '../widgets/cliente.dart';
 
